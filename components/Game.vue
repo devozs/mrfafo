@@ -2,37 +2,45 @@
 
 <template>
   <div class=" bg-slate-500 min-h-screen text-white">
-      <div>
-          <div class=" w-full h-16 shadow-md flex justify-evenly items-center">
-              <button class=" shadow-md text-slate-100  px-2 py-1 mx-1 my-2 hover:bg-slate-700">
-                  <NuxtLink to="/">Home</NuxtLink>
-              </button>
+    <div>
+      <div class=" w-full h-16 shadow-md flex justify-evenly items-center">
+        <button class=" shadow-md text-slate-100  px-2 py-1 mx-1 my-2 hover:bg-slate-700">
+          <NuxtLink to="/">Home</NuxtLink>
+        </button>
 
-              <div class="score flex items-center justify-evenly flex-1">
-                  <span>
-                      <button @click="restartGame"
-                          class=" shadow-md text-slate-100  px-2 py-1 mx-1 my-2 hover:bg-slate-700">Retry</button>
+        <div class="score flex items-center justify-evenly flex-1">
+          <span>
+            <button @click="restartGame"
+              class=" shadow-md text-slate-100  px-2 py-1 mx-1 my-2 hover:bg-slate-700">Retry</button>
 
-                  </span>
-                  <span class="">Score: {{ score }}</span>
-                  <span>
-                      <StopWatch :time="store.time" :resetTime="start" />
-                  </span>
-                  <span>{{ store.mode.toUpperCase() }}</span>
-              </div>
+          </span>
+          <span class="">Score: {{ score }}</span>
+          <span>
+            <StopWatch :time="store.time" :resetTime="start" />
+          </span>
+          <span>{{ store.mode.toUpperCase() }}</span>
+        </div>
 
-          </div>
       </div>
-      <div class="w-full flex justify-center mt-5 flex-row items-center">
-          <h1 class="font-bold text-xl">#MrFAFO</h1>
-          <img :src="'mole-hammer.png'" class="w-20" alt="">
+    </div>
+    <div class="w-full flex justify-center mt-5 flex-row items-center">
+      <h1 class="font-bold text-xl">#MrFAFO</h1>
+      <img :src="'mole-hammer.png'" class="w-20" alt="">
+    </div>
+    <div class="game">
+      <div class="hole rounded-t-full" v-for="bushes, index in 6" :class="index + 1 === hole ? 'up' : ''" :key="index">
+        <img v-show="start && !moleBonked" :src="randomFafo()" class="rounded-t-full mole" alt="" @click="bonk">
       </div>
-      <div class="game ">
-          <div class="hole rounded-t-full" v-for="bushes, index in 6" :class="index + 1 === hole ? 'up' : ''"
-              :key="index">
-              <img v-show="start && !moleBonked" :src="randomFafo()" class="rounded-t-full mole" alt="" @click="bonk">
-          </div>
+    </div>
+    <div v-if="gameEndDialog" class="w-full flex justify-center mt-5 flex-row items-center">
+      <div class="flex w-full m-auto justify-center bg-slate-500 items-center ">
+        <div class=" w-66 bg-slate-600 rounded-md px-6 py-8 shadow-lg  text-slate-50 text-center">
+          <h1 class=" text-2xl text-white font-bold">Game Over!</h1>
+          <h1 class=" text-2xl text-white font-bold">{{ `Your score is ${score}` }}</h1>
+        </div>
       </div>
+    </div>
+
   </div>
 </template>
 
@@ -48,6 +56,8 @@ const startTimeout = ref(null);
 const moleBonked = ref(false);
 const score = ref(0);
 
+const gameEndDialog = ref(false)
+
 const randomTime = (min, max) => {
   return Math.round(Math.random() * (max - min) + min);
 };
@@ -55,7 +65,7 @@ const randomTime = (min, max) => {
 const randomHole = (holes) => {
   let id = Math.floor(Math.random() * holes + 1);
   while (id === lastHole.value) {
-      id = Math.floor(Math.random() * holes + 1);
+    id = Math.floor(Math.random() * holes + 1);
   }
   lastHole.value = id;
   return id;
@@ -73,26 +83,28 @@ const peep = () => {
   hole.value = randomHole(6);
 
   peepTimeout.value = setTimeout(() => {
-      if (start.value) peep();
+    if (start.value) peep();
 
   }, changeTime);
 };
 
 
 const startGame = () => {
+  gameEndDialog.value = false
   start.value = true;
   let gameTime = store.time;
   score.value = 0;
   peep()
   startTimeout.value = setTimeout(() => {
-      start.value = false;
-      hole.value = 0;
-      alert(`Game Over! Your score is ${score.value}`);
+    start.value = false;
+    hole.value = 0;
+    // alert(`Game Over! Your score is ${score.value}`);
+    gameEndDialog.value = true
   }, gameTime)
 }
 
 const restartGame = () => {
-
+  gameEndDialog.value = false
   clearTimeout(peepTimeout.value);
   clearTimeout(startTimeout.value);
   start.value = false;
@@ -101,7 +113,7 @@ const restartGame = () => {
 
   // Start the game again
   setTimeout(() => {
-      startGame();
+    startGame();
   }, 100);
 };
 
@@ -111,8 +123,8 @@ const bonk = (event) => {
   moleBonked.value = true;
   clearTimeout(peepTimeout.value); // Stop the current peep
   setTimeout(() => {
-      moleBonked.value = false;
-      peep(); // Start a new peep
+    moleBonked.value = false;
+    peep(); // Start a new peep
   }, 200);
 };
 
