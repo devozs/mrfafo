@@ -6,7 +6,7 @@
                 <h1 class=" text-2xl text-white font-bold">Whack #MrFAFO</h1>
 
                 <div class="difficulty mt-2">
-                    <b>Acting Aevel:</b>
+                    <b>Pollywood Level:</b>
                     <div>
                         <button class=" shadow-md text-slate-300 px-3 py-1 mx-1 my-2 hover:bg-slate-700 uppercase"
                             @click="changeDifficulty('easy')">Easy</button>
