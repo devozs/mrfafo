@@ -28,7 +28,7 @@
       <img :src="'mole-hammer.png'" class="w-20" alt="">
     </div>
     <div class="game">
-      <div class="hole rounded-t-full" v-for="bushes, index in 6" :class="index + 1 === hole ? 'up' : ''" :key="index">
+      <div class="hole" v-for="bushes, index in 6" :class="index + 1 === hole ? 'up' : ''" :key="index">
         <img v-show="start && !moleBonked" :src="randomFafo()" class="rounded-t-full mole" alt="" @click="bonk">
       </div>
     </div>
@@ -177,4 +177,38 @@ onMounted(() => {
 .hole.up .mole {
   top: 40px;
 }
+
+@media (max-width: 600px) {
+  .game {
+    width: 100%;
+    padding: 0 10px; /* Add padding to prevent elements from touching the screen edges */
+  }
+
+  .hole {    
+    flex: 1 0 40%;
+    margin: 5px;
+    position: relative;
+
+    
+  }
+
+  .hole:after {
+    width: 100%; 
+    height: 100px; 
+    bottom: -50px; 
+  }
+
+  .mole {
+    height: 100px; /* Adjust mole size to fit the smaller hole */
+    top: 100%;
+    left: 42%;
+    transform: translateX(-50%); /* Center the mole horizontally within the hole */
+  }
+
+  .hole.up .mole {
+    top: 10px; /* Adjust the popped-up position of the mole */
+  }
+
+}
+
 </style>
