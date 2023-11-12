@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     }
   },
   gtag: {
-    id: 'https://mrfafo.devozs.com/'
+    id: 'G-HQQ2EG0LK7'
   },
   css: ['~/assets/css/main.css'],
 
