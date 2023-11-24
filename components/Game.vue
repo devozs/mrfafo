@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="w-full flex justify-center mt-5 flex-row items-center">
-      <h1 class="font-bold text-xl">#MrFAFO</h1>
+      <h1 class="font-bold text-2xl text-white">#MrFAFO</h1>
       <img :src="'mole-hammer.png'" class="w-20" alt="">
     </div>
     <div class="game bg-black bg-opacity-60 rounded-t-3xl">
