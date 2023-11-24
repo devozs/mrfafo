@@ -1,7 +1,7 @@
 
 
 <template>
-  <div class="background-image bg-slate-500 min-h-screen text-black font-bold text-lg">
+  <div class="background-image min-h-screen text-black font-bold text-lg">
     <div>
       <div class=" w-full h-16 shadow-md flex justify-evenly items-center">
         <button class=" shadow-md px-2 py-1 mx-1 my-2 hover:bg-slate-700">
