@@ -1,20 +1,20 @@
 
 
 <template>
-  <div class=" bg-slate-500 min-h-screen text-white">
+  <div class="background-image bg-slate-500 min-h-screen text-black font-bold text-lg">
     <div>
       <div class=" w-full h-16 shadow-md flex justify-evenly items-center">
-        <button class=" shadow-md text-slate-100  px-2 py-1 mx-1 my-2 hover:bg-slate-700">
+        <button class=" shadow-md px-2 py-1 mx-1 my-2 hover:bg-slate-700">
           <NuxtLink to="/">Home</NuxtLink>
         </button>
 
         <div class="score flex items-center justify-evenly flex-1">
           <span>
             <button @click="restartGame"
-              class=" shadow-md text-slate-100  px-2 py-1 mx-1 my-2 hover:bg-slate-700">Retry</button>
+              class=" shadow-md  px-2 py-1 mx-1 my-2 hover:bg-slate-700">RETRY</button>
 
           </span>
-          <span class="">Score: {{ score }}</span>
+          <span class="">SCORE: {{ score }}</span>
           <span>
             <StopWatch :time="store.time" :resetTime="start" />
           </span>
@@ -27,14 +27,14 @@
       <h1 class="font-bold text-xl">#MrFAFO</h1>
       <img :src="'mole-hammer.png'" class="w-20" alt="">
     </div>
-    <div class="game">
+    <div class="game bg-black bg-opacity-60 rounded-t-3xl">
       <div class="hole" v-for="bushes, index in 6" :class="index + 1 === hole ? 'up' : ''" :key="index">
         <img v-show="start && !moleBonked" :src="randomFafo()" class="rounded-t-full mole" alt="" @click="bonk">
       </div>
     </div>
     <div v-if="gameEndDialog" class="w-full flex justify-center mt-5 flex-row items-center">
-      <div class="flex w-full m-auto justify-center bg-slate-500 items-center ">
-        <div class=" w-66 bg-slate-600 rounded-md px-6 py-8 shadow-lg  text-slate-50 text-center">
+      <div class="flex w-full m-auto justify-center bg-black bg-opacity-70 rounded-full items-center ">
+        <div class=" w-66  px-6 py-8 shadow-lg  text-slate-50 text-center">
           <h1 class=" text-2xl text-white font-bold">Game Over!</h1>
           <h1 class=" text-2xl text-white font-bold">{{ `Your score is ${score}` }}</h1>
         </div>
@@ -209,6 +209,11 @@ onMounted(() => {
     top: 10px; /* Adjust the popped-up position of the mole */
   }
 
+}
+.background-image {
+  background-image: url('images/cover.png'); /* Replace with your image path */
+  background-position: top;
+  background-repeat: no-repeat;
 }
 
 </style>

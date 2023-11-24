@@ -1,6 +1,6 @@
 <template>
     <div>
-        Time: {{ secondsLeft }}
+        TIME: {{ secondsLeft }}
     </div>
 </template>
 
