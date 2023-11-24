@@ -62,7 +62,7 @@ const changeDifficulty = (diff) => {
 
 <style scoped>
 .background-image {
-  background-image: url('images/cover.png'); /* Replace with your image path */
+  background-image: url('/images/cover.png'); /* Replace with your image path */
   background-position: center;
   background-repeat: no-repeat;
 }

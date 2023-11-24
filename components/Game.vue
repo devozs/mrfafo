@@ -211,7 +211,7 @@ onMounted(() => {
 
 }
 .background-image {
-  background-image: url('images/cover.png'); /* Replace with your image path */
+  background-image: url('/images/cover.png'); /* Replace with your image path */
   background-position: top;
   background-repeat: no-repeat;
 }
