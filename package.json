@@ -20,7 +20,6 @@
     "@types/node": "^18",
     "autoprefixer": "^10.4.15",
     "nuxt": "^3.7.3",
-    "nuxt-gtag": "^1.1.1",
     "nuxt-icon": "^0.4.1",
     "nuxt-og-image": "^2.2.3",
     "nuxt-simple-robots": "^3.1.9",

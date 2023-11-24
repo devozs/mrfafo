@@ -1,6 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: false },
+  runtimeConfig: {
+    public: {
+      gtagId: 'G-HQQ2EG0LK7',
+    },
+  },
   site: {
     url: 'https://mrfafo.devozs.com',
     name: 'Mr FAFO',
@@ -21,9 +26,6 @@ export default defineNuxtConfig({
         // other common separators: '·', '—', '•'
       }
     }
-  },
-  gtag: {
-    id: 'G-HQQ2EG0LK7'
   },
   css: ['~/assets/css/main.css'],
 
