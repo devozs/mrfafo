@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="flex w-full m-auto justify-center bg-slate-500  items-center min-h-screen">
+        <div class="background-image flex w-full m-auto justify-center bg-slate-500  items-center min-h-screen">
 
-            <div class=" w-66 bg-slate-600 rounded-md px-6 py-8 shadow-lg  text-slate-50 text-center">
+            <div class=" w-66 bg-black bg-opacity-90 rounded-t-3xl rounded-md px-6 py-8 shadow-lg  text-slate-50 text-center">
                 <h1 class=" text-2xl text-white font-bold">Whack #MrFAFO</h1>
 
                 <div class="difficulty mt-2">
@@ -60,7 +60,14 @@ const changeDifficulty = (diff) => {
 
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.background-image {
+  background-image: url('images/cover.png'); /* Replace with your image path */
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+</style>
 
 
 

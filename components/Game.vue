@@ -134,7 +134,7 @@ onMounted(() => {
 })
 </script>
 
-<style  scoped>
+<style scoped>
 .game {
   width: 600px;
   height: 400px;
