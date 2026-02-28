@@ -37,11 +37,7 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    '@pinia/nuxt',
-    'nuxt-og-image',
-    '@nuxtseo/module',
-    'nuxt-simple-robots',
-    'nuxt-simple-sitemap'
+    '@pinia/nuxt'
   ],
   pinia: {
     autoImports: ['defineStore', 'acceptHMRUpdate', 'storeToRefs']
