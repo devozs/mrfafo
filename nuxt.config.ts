@@ -18,15 +18,6 @@ export default defineNuxtConfig({
     twitter: '@DevOzs',
 
   },
-  app: {
-    head: {
-      titleTemplate: '%s %separator Mr FAFO', // WA due to bug in SEO-KIT (to be removed once upgraded)
-      templateParams: {
-        separator: '•'
-        // other common separators: '·', '—', '•'
-      }
-    }
-  },
   css: ['~/assets/css/main.css'],
 
   postcss: {
@@ -36,9 +27,7 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: [
-    '@pinia/nuxt'
-  ],
+  modules: ['@pinia/nuxt', '@nuxtjs/seo'],
   pinia: {
     autoImports: ['defineStore', 'acceptHMRUpdate', 'storeToRefs']
   },
